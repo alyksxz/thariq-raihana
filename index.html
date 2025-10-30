@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Kad Kahwin</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap" rel="stylesheet">
+    
+    
     <style>
         * {
             margin: 0;
@@ -14,6 +19,7 @@
 
         :root {
             --blush-pink: #f4e4e4;
+            --pink-purple: #A62163;
             --ivory: #fffef7;
             --gold: #d4af37;
             --gold-light: #e8d192;
@@ -23,7 +29,7 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, var(--blush-pink) 0%, var(--ivory) 100%);
+            background: linear-gradient(135deg, var(--pink-purple) 0%, var(--ivory) 100%);
             color: var(--text-dark);
             overflow-x: hidden;
             position: relative;
@@ -51,8 +57,8 @@
             opacity: 0.03;
             z-index: 1;
             background-image: 
-                repeating-linear-gradient(45deg, transparent, transparent 35px, var(--gold) 35px, var(--gold) 36px),
-                repeating-linear-gradient(-45deg, transparent, transparent 35px, var(--gold) 35px, var(--gold) 36px);
+                repeating-linear-gradient(45deg, transparent, transparent 35px, var(--pink-purple) 35px, var(--pink-purple) 36px),
+                repeating-linear-gradient(-45deg, transparent, transparent 35px, var(--pink-purple) 35px, var(--pink-purple) 36px);
             pointer-events: none;
         }
 
@@ -92,7 +98,7 @@
             right: 20px;
             z-index: 100;
             background: white;
-            border: 2px solid var(--gold);
+            border: 2px solid var(--pink-purple);
             border-radius: 50%;
             width: 50px;
             height: 50px;
@@ -111,7 +117,7 @@
 
         .audio-icon {
             font-size: 20px;
-            color: var(--gold);
+            color: var(--pink-purple);
         }
 
         .hero {
@@ -123,6 +129,8 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+        }
+
         .hero::before {
             content: '';
             position: absolute;
@@ -130,13 +138,13 @@
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+            background: linear-gradient(90deg, var(--pink-purple), var(--pink-purple-light), var(--pink-purple));
         }
 
         .bismillah {
             font-family: 'Cormorant Garamond', serif;
             font-size: 24px;
-            color: var(--gold);
+            color: var(--pink-purple);
             margin-bottom: 30px;
             font-weight: 300;
         }
@@ -150,7 +158,7 @@
         }
 
         .names {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'MonteCarlo', cursive;
             font-size: 56px;
             font-weight: 600;
             color: var(--text-dark);
@@ -174,7 +182,7 @@
         .ampersand {
             display: block;
             font-size: 40px;
-            color: var(--gold);
+            color: var(--pink-purple);
             margin: 10px 0;
         }
 
@@ -207,7 +215,7 @@
         }
 
         .parent-divider {
-            color: var(--gold);
+            color: var(--pink-purple);
             font-size: 24px;
             margin: 15px 0;
             opacity: 0.5;
@@ -216,7 +224,7 @@
         .floral-divider {
             width: 100px;
             height: 2px;
-            background: var(--gold);
+            background: var(--pink-purple);
             margin: 30px auto;
             position: relative;
         }
@@ -225,7 +233,7 @@
         .floral-divider::after {
             content: '❋';
             position: absolute;
-            color: var(--gold);
+            color: var(--pink-purple);
             font-size: 16px;
             top: -8px;
         }
@@ -241,19 +249,19 @@
         .details-section {
             background: white;
             border-radius: 20px;
-            padding: 40px;
+            padding: 50px 40px;
             margin: 30px 0;
             box-shadow: 0 10px 40px rgba(0,0,0,0.08);
         }
 
         .detail-item {
-            margin: 30px 0;
+            margin: 35px 0;
             text-align: center;
         }
 
         .detail-icon {
             font-size: 28px;
-            color: var(--gold);
+            color: var(--pink-purple);
             margin-bottom: 10px;
         }
 
@@ -279,11 +287,12 @@
 
         .rsvp-section {
             text-align: center;
-            margin: 40px 0;
+            margin: 50px 0;
+            padding: 0 20px;
         }
 
         .rsvp-button {
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            background: linear-gradient(135deg, var(--pink-purple), var(--pink-purple));
             color: white;
             border: none;
             padding: 18px 50px;
@@ -292,7 +301,7 @@
             text-transform: uppercase;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 8px 25px rgb(134, 1, 80);
             transition: all 0.3s ease;
             font-family: 'Montserrat', sans-serif;
             font-weight: 500;
@@ -300,7 +309,7 @@
 
         .rsvp-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
+            box-shadow:  0 8px 25px rgba(134, 1, 81, 0.533);
         }
 
         .rsvp-button:active {
@@ -328,7 +337,7 @@
 
         .footer {
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 20px 40px;
             color: var(--text-light);
             font-size: 14px;
         }
@@ -353,12 +362,28 @@
             }
 
             .details-section {
-                padding: 30px 20px;
+                padding: 40px 25px;
             }
 
             .rsvp-button {
                 padding: 15px 40px;
                 font-size: 14px;
+            }
+
+            .wishes-section {
+                padding: 40px 25px;
+            }
+
+            .wishes-title {
+                font-size: 30px;
+            }
+
+            .wish-card {
+                padding: 20px;
+            }
+
+            .parent-names {
+                font-size: 18px;
             }
         }
 
@@ -388,13 +413,153 @@
             z-index: 1000;
             opacity: 0;
             transition: all 0.3s ease;
-            border: 2px solid var(--gold);
+            border: 2px solid var(--pink-purple);
         }
 
         .message-toast.show {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
         }
+
+        .wishes-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .wishes-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+
+        .wishes-form {
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+
+        .wish-input,
+        .wish-textarea {
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            background: var(--ivory);
+        }
+
+        .wish-input:focus,
+        .wish-textarea:focus {
+            outline: none;
+            border-color: var(--pink-purple);
+            background: white;
+        }
+
+        .wish-textarea {
+            min-height: 120px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        .char-count {
+            text-align: right;
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+
+        .wish-submit-button {
+            width: 100%;
+            background: linear-gradient(135deg, var(--pink-purple), var(--pink-purple-light));
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 15px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+
+        .wish-submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .wish-submit-button:active {
+            transform: translateY(0);
+        }
+
+        .wishes-display {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .wish-card {
+            background: linear-gradient(135deg, var(--ivory) 0%, white 100%);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            animation: wishSlideIn 0.5s ease-out;
+        }
+
+        @keyframes wishSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .wish-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
+        }
+
+        .wish-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .wish-author {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 16px;
+        }
+
+        .wish-date {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .wish-content {
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
     </style>
 </head>
 <body>
@@ -406,32 +571,39 @@
     </div>
 
     <div class="container">
+        <div class="details-section"  style="place-items:center;">
+            <div class="invitation-text">MAJLIS PERKAHWINAN</div>
+           
+            <div class="names" style="place-items:center;">
+                <div>Thariq</div>
+                <span class="ampersand" style="font-family:'Times New Roman', Times, serif;font-size: 30px;font-weight: lighter;">&</span>
+                <div>Raihana</div>
+            </div>
+            <div class="floral-divider"></div>
+        </div>
+
         <div class="hero">
             <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
             <div class="invitation-text">Dengan Penuh Kesyukuran</div>
             <div class="invitation-text">Kami Menjemput Anda ke Majlis Perkahwinan</div>
             
-            <div class="names">
-                Nur Aisyah
-                <span class="ampersand">&</span>
-                Muhammad Hafiz
-            </div>
-
             <div class="parents-section">
                 <div class="parent-info">
-                    <div class="parent-label">Anak Perempuan Kepada</div>
-                    <div class="parent-names">Encik Ahmad bin Abdullah</div>
-                    <div class="parent-names">& Puan Fatimah binti Ibrahim</div>
+                    <div class="parent-names">Encik Azman  bin Ali Basha</div>
+                    <div class="parent-names">Puan Nazira binti Mahayuddin</div>
                 </div>
+                <div class="parent-label">15, Permatang Badak Baru 25, Taman Bukit Rangin, 25150 Kuantan, Pahang</div>
 
-                <div class="parent-divider">∘</div>
 
-                <div class="parent-info">
-                    <div class="parent-label">Anak Lelaki Kepada</div>
-                    <div class="parent-names">Encik Hassan bin Omar</div>
-                    <div class="parent-names">& Puan Zainab binti Mahmood</div>
-                </div>
             </div>
+            
+            <div class="names">
+                Muhammad  Thariq bin Azman
+                <span class="ampersand">&</span>
+                Nur Raihana
+            </div>
+
+            
 
             <div class="floral-divider"></div>
         </div>
@@ -440,7 +612,7 @@
             <div class="detail-item">
                 <div class="detail-icon">📅</div>
                 <div class="detail-label">Tarikh</div>
-                <div class="detail-value">Sabtu, 15 Februari 2025</div>
+                <div class="detail-value">Sabtu, 17 Januari 2026</div>
             </div>
 
             <div class="detail-item">
@@ -462,6 +634,50 @@
 
         <div class="rsvp-section">
             <button class="rsvp-button" id="rsvpButton">Sahkan Kehadiran</button>
+        </div>
+
+        <div class="wishes-section">
+            <h2 class="wishes-title">Ucapan & Doa</h2>
+            <p class="wishes-subtitle">Kongsi ucapan dan doa restu anda untuk pengantin</p>
+            
+            <div class="wishes-form">
+                <input type="text" id="wishName" class="wish-input" placeholder="Nama Anda" maxlength="50">
+                <textarea id="wishMessage" class="wish-textarea" placeholder="Tulis ucapan anda di sini..." maxlength="300"></textarea>
+                <div class="char-count" id="charCount">0/300</div>
+                <button class="wish-submit-button" id="wishSubmitButton">Hantar Ucapan</button>
+            </div>
+
+            <div class="wishes-display" id="wishesDisplay">
+                <div class="wish-card">
+                    <div class="wish-header">
+                        <span class="wish-author">Siti Nurhaliza</span>
+                        <span class="wish-date">28 Okt 2024</span>
+                    </div>
+                    <div class="wish-content">
+                        Tahniah kepada pengantin! Semoga perkahwinan kalian diberkati dengan kebahagiaan yang kekal dan dipenuhi dengan kasih sayang. Barakallahu lakuma wa baraka alaikuma! 💐
+                    </div>
+                </div>
+
+                <div class="wish-card">
+                    <div class="wish-header">
+                        <span class="wish-author">Ahmad Faiz</span>
+                        <span class="wish-date">27 Okt 2024</span>
+                    </div>
+                    <div class="wish-content">
+                        Selamat pengantin baru! Semoga Allah memberikan keberkatan dalam rumahtangga kalian dan dikurniakan zuriat yang soleh dan solehah. ✨
+                    </div>
+                </div>
+
+                <div class="wish-card">
+                    <div class="wish-header">
+                        <span class="wish-author">Keluarga Azman</span>
+                        <span class="wish-date">26 Okt 2024</span>
+                    </div>
+                    <div class="wish-content">
+                        Alhamdulillah! Sangat gembira melihat kalian bersatu. Semoga menjadi pasangan yang sentiasa bersyukur dan saling menyayangi hingga ke akhir hayat. 💕
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="footer">
@@ -563,6 +779,73 @@
                 messageToast.classList.remove('show');
             }, 3000);
         });
+
+        // Wedding wishes functionality
+        const wishName = document.getElementById('wishName');
+        const wishMessage = document.getElementById('wishMessage');
+        const charCount = document.getElementById('charCount');
+        const wishSubmitButton = document.getElementById('wishSubmitButton');
+        const wishesDisplay = document.getElementById('wishesDisplay');
+
+        // Character counter
+        wishMessage.addEventListener('input', () => {
+            const count = wishMessage.value.length;
+            charCount.textContent = `${count}/300`;
+            charCount.style.color = count > 280 ? '#d4af37' : 'var(--text-light)';
+        });
+
+        // Submit wish
+        wishSubmitButton.addEventListener('click', () => {
+            const name = wishName.value.trim();
+            const message = wishMessage.value.trim();
+
+            if (!name || !message) {
+                alert('Sila isi nama dan ucapan anda');
+                return;
+            }
+
+            // Create new wish card
+            const wishCard = document.createElement('div');
+            wishCard.className = 'wish-card';
+            
+            const today = new Date();
+            const dateStr = today.toLocaleDateString('ms-MY', { day: 'numeric', month: 'short', year: 'numeric' });
+
+            wishCard.innerHTML = `
+                <div class="wish-header">
+                    <span class="wish-author">${escapeHtml(name)}</span>
+                    <span class="wish-date">${dateStr}</span>
+                </div>
+                <div class="wish-content">${escapeHtml(message)}</div>
+            `;
+
+            // Add to top of wishes display
+            wishesDisplay.insertBefore(wishCard, wishesDisplay.firstChild);
+
+            // Clear form
+            wishName.value = '';
+            wishMessage.value = '';
+            charCount.textContent = '0/300';
+
+            // Show success message
+            messageToast.textContent = 'Terima kasih atas ucapan anda! 💐';
+            messageToast.classList.add('show');
+
+            setTimeout(() => {
+                messageToast.classList.remove('show');
+                messageToast.textContent = 'Terima kasih! Kehadiran anda disahkan ✨';
+            }, 3000);
+
+            // Scroll to the new wish
+            wishCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // Helper function to escape HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
