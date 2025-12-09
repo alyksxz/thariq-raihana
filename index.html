@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation - Thariq & Raihana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #2c2c2c;
+            overflow-x: hidden;
+            background: #f5f1e8;
+        }
+
+        /* Batik Background */
+        .batik-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('batik.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.50;
+            z-index: -1;
+        }
+
+        /* Opener Screen */
+        .opener-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(170, 51, 106, 0.95), rgba(200, 80, 130, 0.95));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        .opener-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .opener-content {
+            text-align: center;
+            color: #f5f1e8;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .opener-ornament {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+
+        .opener-content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            letter-spacing: 3px;
+        }
+
+        .opener-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        .open-btn {
+            padding: 15px 50px;
+            background: transparent;
+            border: 2px solid #f5f1e8;
+            color: #f5f1e8;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .open-btn:hover {
+            background: #f5f1e8;
+            color: #AA336A;
+            transform: scale(1.05);
+        }
+
+        /* Main Content */
+        .main-content {
+            opacity: 0;
+            transition: opacity 1.5s ease 0.5s;
+        }
+
+        .main-content.visible {
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(245, 241, 232, 0.85), rgba(245, 241, 232, 0.9));
+            z-index: -1;
+        }
+
+        .hero-ornament {
+            font-size: 4rem;
+            color: #AA336A;
+            margin-bottom: 1rem;
+            opacity: 0.6;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .couple-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 300;
+            color: #AA336A;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .ampersand {
+            font-size: 3rem;
+            opacity: 0.7;
+            margin: 0 1rem;
+        }
+
+        .wedding-date {
+            font-size: 1.3rem;
+            color: #5d4e37;
+            margin-top: 1rem;
+            letter-spacing: 3px;
+            font-weight: 300;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(245, 241, 232, 0.75);
+            z-index: -1;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            color: #AA336A;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .section-ornament {
+            text-align: center;
+            font-size: 2rem;
+            color: #AA336A;
+            opacity: 0.5;
+            margin-bottom: 2rem;
+        }
+
+        /* Our Story */
+        .story-text {
+            font-size: 1rem;
+            line-height: 1.9;
+            text-align: center;
+            color: #4a4a4a;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Parents Section */
+        .parents-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #d4a5bc;
+            padding: 2.5rem;
+            margin: 2rem auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+        }
+
+        .parents-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .parents-header h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: #AA336A;
+            margin-bottom: 0.5rem;
+        }
+
+        .parents-header p {
+            font-size: 1rem;
+            color: #5d4e37;
+            font-style: italic;
+        }
+
+        .parents-info {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .parent-names {
+            font-size: 1.5rem;
+            color: #AA336A;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .parent-label {
+            font-size: 0.95rem;
+            color: #5d4e37;
+            margin-bottom: 1rem;
+        }
+
+        .address-section {
+            padding: 1.5rem;
+        }
+
+        .address-section h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: #AA336A;
+            margin-bottom: 0.8rem;
+            text-align: center;
+        }
+
+        .address-section p {
+            font-size: 0.9rem;
+            color: #5d4e37;
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        /* Calendar Section */
+        .calendar-container {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #d4a5bc;
+            padding: 2rem;
+            margin: 2rem auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+
+        .calendar-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .calendar-header h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: #AA336A;
+            margin-bottom: 0.5rem;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .calendar-day-header {
+            text-align: center;
+            font-weight: 600;
+            padding: 10px 5px;
+            color: #AA336A;
+            font-size: 0.9rem;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            background: #f9f9f9;
+            color: #5d4e37;
+        }
+
+        .calendar-day.empty {
+            background: transparent;
+        }
+
+        .calendar-day.today {
+            background: #AA336A;
+            color: white;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .calendar-day.today::after {
+            content: '💝';
+            position: absolute;
+            bottom: -5px;
+            font-size: 1.2rem;
+        }
+
+        .add-calendar-btn {
+            display: block;
+            width: 100%;
+            margin-top: 1.5rem;
+            padding: 12px 30px;
+            background: #AA336A;
+            color: #f5f1e8;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-calendar-btn:hover {
+            background: #8a2856;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(170, 51, 106, 0.3);
+        }
+
+        /* Event Details */
+        .event-card {
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid #d4a5bc;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: #AA336A;
+            margin-bottom: 1rem;
+        }
+
+        .event-info {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #5d4e37;
+        }
+
+        .event-info strong {
+            color: #AA336A;
+            display: inline-block;
+            min-width: 100px;
+        }
+
+        .location-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .location-btn {
+            flex: 1;
+            min-width: 150px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .map-container {
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container iframe {
+            display: block;
+        }
+
+        .google-maps-btn {
+            background: #4285F4;
+            color: white;
+        }
+
+        .google-maps-btn:hover {
+            background: #357ae8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.3);
+        }
+
+        .waze-btn {
+            background: #33ccff;
+            color: white;
+        }
+
+        .waze-btn:hover {
+            background: #00b8e6;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(51, 204, 255, 0.3);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #d4a5bc;
+        }
+
+        .contact-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #AA336A;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p {
+            font-size: 1rem;
+            color: #5d4e37;
+        }
+
+        /* Music Toggle Button */
+        #musicToggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            background: #AA336A;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        #musicToggle:hover {
+            background: #8a2856;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, rgba(170, 51, 106, 0.9), rgba(200, 80, 130, 0.9));
+            color: #f5f1e8;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .opener-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .couple-names {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .event-card {
+                padding: 1.5rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .calendar-day-header {
+                font-size: 0.75rem;
+                padding: 8px 2px;
+            }
+
+            .calendar-day {
+                font-size: 0.85rem;
+            }
+
+            .location-buttons {
+                flex-direction: column;
+            }
+
+            .location-btn {
+                width: 100%;
+            }
+
+            #musicToggle {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Batik Background -->
+    <div class="batik-background"></div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="https://cdn.jsdelivr.net/gh/alyksxz/thariq-raihana@main/kykt-afgan.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Music Control Button -->
+    <button id="musicToggle">🔇</button>
+
+    <!-- Opener Screen -->
+    <div class="opener-screen" id="opener">
+        <div class="opener-content">
+            <div class="opener-ornament">✿</div>
+            <h1>Jemputan Perkahwinan</h1>
+            <p>THARIQ & RAIHANA</p>
+            <button class="open-btn" id="openBtn">Open Invitation</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-ornament">❀</div>
+            <h1 class="couple-names">
+                Thariq <span class="ampersand">&</span> Raihana
+            </h1>
+            <p class="wedding-date">SABTU, JANUARI 17, 2026</p>
+        </section>
+
+        <!-- Our Story Section -->
+        <section id="story">
+            <div class="section-ornament">❋</div>
+            <p class="story-text">
+                Assalamualaikum & Salam Sejahtera
+                <br><br><br>
+            </p>
+
+             <div class="parents-info">
+                <p class="parent-names">Azman bin Ali Basha<br></p>
+                <p class="parent-names">&<br></p>
+                <p class="parent-names">Nazira binti Mahayuddin<br></p>
+            </div>
+
+            <div class="address-section">
+                <h4>🏠 Kediaman Keluarga</h4>
+                <p>
+                    No. 15, Lorong Permatang Badak Baru 25,<br>
+                    Taman Bukit Rangin,<br>
+                    25150 Kuantan, Pahang<br>
+                    Malaysia
+                </p>
+            </div>
+
+                <p class="story-text">
+                Dengan rasa penuh hormat dan takzim, kami menjemput anda sekeluarga ke Majlis Walimatulurus putera kami. 
+                <br>
+                Kehadiran dan doa restu anda amatlah kami harapkan bagi menyerikan lagi majlis yang penuh bermakna ini dan memberkati perjalanan baharu pasangan pengantin.
+                <br>
+                </p>
+        </section>
+
+        <!-- Calendar Section -->
+        <section id="calendar">
+            <div class="section-ornament">📅</div>
+            <h2 class="section-title">Save The Date</h2>
+            
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <h3>January 2026</h3>
+                </div>
+                
+                <div class="calendar-grid">
+                    <!-- Day headers -->
+                    <div class="calendar-day-header">Sun</div>
+                    <div class="calendar-day-header">Mon</div>
+                    <div class="calendar-day-header">Tue</div>
+                    <div class="calendar-day-header">Wed</div>
+                    <div class="calendar-day-header">Thu</div>
+                    <div class="calendar-day-header">Fri</div>
+                    <div class="calendar-day-header">Sat</div>
+                    
+                    <!-- Empty cells for days before month starts (January 2026 starts on Thursday) -->
+                    <div class="calendar-day empty"></div>
+                    <div class="calendar-day empty"></div>
+                    <div class="calendar-day empty"></div>
+                    <div class="calendar-day empty"></div>
+                    
+                    <!-- Days of January 2026 -->
+                    <div class="calendar-day">1</div>
+                    <div class="calendar-day">2</div>
+                    <div class="calendar-day">3</div>
+                    <div class="calendar-day">4</div>
+                    <div class="calendar-day">5</div>
+                    <div class="calendar-day">6</div>
+                    <div class="calendar-day">7</div>
+                    <div class="calendar-day">8</div>
+                    <div class="calendar-day">9</div>
+                    <div class="calendar-day">10</div>
+                    <div class="calendar-day">11</div>
+                    <div class="calendar-day">12</div>
+                    <div class="calendar-day">13</div>
+                    <div class="calendar-day">14</div>
+                    <div class="calendar-day">15</div>
+                    <div class="calendar-day">16</div>
+                    <div class="calendar-day today">17</div>
+                    <div class="calendar-day">18</div>
+                    <div class="calendar-day">19</div>
+                    <div class="calendar-day">20</div>
+                    <div class="calendar-day">21</div>
+                    <div class="calendar-day">22</div>
+                    <div class="calendar-day">23</div>
+                    <div class="calendar-day">24</div>
+                    <div class="calendar-day">25</div>
+                    <div class="calendar-day">26</div>
+                    <div class="calendar-day">27</div>
+                    <div class="calendar-day">28</div>
+                    <div class="calendar-day">29</div>
+                    <div class="calendar-day">30</div>
+                    <div class="calendar-day">31</div>
+                </div>
+                
+                <button class="add-calendar-btn" onclick="addToCalendar()">📅 Add to My Calendar</button>
+            </div>
+        </section>
+
+        <!-- Event Details Section -->
+        <section id="event">
+            <div class="section-ornament">✾</div>
+            <h2 class="section-title">Butiran Majlis</h2>
+            
+            <div class="event-card">
+                <h3>Majlis Perkahwinan & Resepsi</h3>
+                <div class="event-info">
+                    <p><strong>Date:</strong> Sabtu, Januari 17, 2026</p>
+                    <p><strong>Time:</strong> 11:00 AM - 4:00 PM</p>
+                    <p><strong>Venue:</strong> Dewan Atabara</p>
+                    <p><strong>Address:</strong> Indera Mahkota, 25200 Kuantan, Pahang, Malaysia</p>
+                </div>
+                
+                <!-- Embedded Google Map -->
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3985.9967890123456!2d103.2732641!3d3.8342013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31c8ba2f04a3503f%3A0xbe0352f01d61b176!2sDewan%20CO-DIDIK%20Indera%20Mahkota%20Kuantan%20(Dewan%20Atabara)!5e0!3m2!1sen!2smy!4v1234567890123!5m2!1sen!2smy"
+                        width="100%" 
+                        height="350" 
+                        style="border:0; border-radius: 8px; margin-top: 1.5rem;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                
+                <div class="location-buttons">
+                    <a href="https://www.google.com/maps/place/Dewan+CO-DIDIK+Indera+Mahkota+Kuantan+(Dewan+Atabara)/@3.8342013,103.2732641,17z/data=!4m6!3m5!1s0x31c8ba2f04a3503f:0xbe0352f01d61b176!8m2!3d3.8342013!4d103.275839!16s%2Fg%2F11c5bsgj8y?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D" 
+                       target="_blank" 
+                       class="location-btn google-maps-btn">
+                        📍 Google Maps
+                    </a>
+                    <a href="https://waze.com/ul?ll=3.8342013,103.275839&navigate=yes" 
+                       target="_blank" 
+                       class="location-btn waze-btn">
+                        🚗 Waze
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="section-ornament">✿</div>
+            <h2 class="section-title">Hubungi Kami</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>Azman</h3>
+                    <p>📞 +60 19988-0011</p>
+                </div>
+                <div class="contact-card">
+                    <h3>Nazira</h3>
+                    <p>📞 +60 19985-4400</p>
+                </div>
+                <div class="contact-card">
+                    <h3>Naqeeb</h3>
+                    <p>📞 +60 16986-0695</p>
+                </div>
+                <div class="contact-card">
+                    <h3>Athira</h3>
+                    <p>📞 +60 19914-1100</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>Terima kasih kerana menjadi sebahagian daripada hari istimewa kami.</p>
+            <p style="margin-top: 1rem; font-size: 1.2rem;">❤️</p>
+        </footer>
+    </div>
+
+    <script>
+        const opener = document.getElementById('opener');
+        const openBtn = document.getElementById('openBtn');
+        const mainContent = document.getElementById('mainContent');
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        let isPlaying = false;
+
+        openBtn.addEventListener('click', function() {
+            opener.classList.add('hidden');
+            setTimeout(() => {
+                mainContent.classList.add('visible');
+                // Try to autoplay music
+                bgMusic.play().catch(e => {
+                    console.log('Autoplay prevented');
+                });
+                isPlaying = true;
+                musicToggle.textContent = '🔊';
+            }, 500);
+        });
+
+        // Music toggle control
+        musicToggle.addEventListener('click', function() {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicToggle.textContent = '🔇';
+                isPlaying = false;
+            } else {
+                bgMusic.play();
+                musicToggle.textContent = '🔊';
+                isPlaying = true;
+            }
+        });
+
+        // Add to Calendar function
+        function addToCalendar() {
+            const title = 'Thariq & Raihana Wedding';
+            const startDate = '20260117T140000';
+            const endDate = '20260117T210000';
+            const location = 'Dewan CO-DIDIK Indera Mahkota Kuantan (Dewan Atabara), 25200 Kuantan, Pahang';
+            const description = 'Join us as we celebrate our special day!';
+            
+            // Create Google Calendar URL
+            const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(description)}&location=${encodeURIComponent(location)}`;
+            
+            // Open in new window
+            window.open(googleCalUrl, '_blank');
+        }
+
+        // Smooth scroll enhancement
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
