@@ -26,7 +26,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1591825729269-caeb344f6df2?w=1200');
+            background-image: url('batik.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -480,6 +480,29 @@
             color: #5d4e37;
         }
 
+        /* Music Toggle Button */
+        #musicToggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            background: #AA336A;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        #musicToggle:hover {
+            background: #8a2856;
+            transform: scale(1.1);
+        }
+
         /* Footer */
         footer {
             background: linear-gradient(135deg, rgba(170, 51, 106, 0.9), rgba(200, 80, 130, 0.9));
@@ -553,6 +576,14 @@
             .location-btn {
                 width: 100%;
             }
+
+            #musicToggle {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                bottom: 15px;
+                right: 15px;
+            }
         }
 
         /* Smooth Scroll */
@@ -565,11 +596,19 @@
     <!-- Batik Background -->
     <div class="batik-background"></div>
 
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="https://cdn.jsdelivr.net/gh/alyksxz/thariq-raihana@main/only-leehi.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Music Control Button -->
+    <button id="musicToggle">🔇</button>
+
     <!-- Opener Screen -->
     <div class="opener-screen" id="opener">
         <div class="opener-content">
             <div class="opener-ornament">✿</div>
-            <h1>Wedding Invitation</h1>
+            <h1>Jemputan Perkahwinan</h1>
             <p>THARIQ & RAIHANA</p>
             <button class="open-btn" id="openBtn">Open Invitation</button>
         </div>
@@ -583,7 +622,7 @@
             <h1 class="couple-names">
                 Thariq <span class="ampersand">&</span> Raihana
             </h1>
-            <p class="wedding-date">SATURDAY, JANUARY 17, 2026</p>
+            <p class="wedding-date">SABTU, JANUARI 17, 2026</p>
         </section>
 
         <!-- Our Story Section -->
@@ -601,7 +640,7 @@
             </div>
 
             <div class="address-section">
-                <h4>🏠 Family Residence</h4>
+                <h4>🏠 Kediaman Keluarga</h4>
                 <p>
                     No. 15, Lorong Permatang Badak Baru 25,<br>
                     Taman Bukit Rangin,<br>
@@ -611,13 +650,12 @@
             </div>
 
                 <p class="story-text">
-                With heartfelt joy, we invite you to join us in celebrating our son's wedding. 
+                Dengan penuh rasa syukur, kami menjemput anda untuk meraikan majlis perkahwinan putera kami. 
                 <br>
-                Your presence will make our special day even more memorable as we embark on this beautiful journey together.
+                Kehadiran anda amat bermakna dan akan menyerikan lagi hari istimewa kami saat mereka memulakan perjalanan baharu bersama.
                 <br>
-                We look forward to sharing this joyous occasion with our beloved family and friends.
+                Kami amat berbesar hati untuk berkongsi detik penuh kegembiraan ini bersama keluarga dan sahabat yang kami kasihi.
                 </p>
-            </p>
         </section>
 
         <!-- Calendar Section -->
@@ -687,12 +725,12 @@
         <!-- Event Details Section -->
         <section id="event">
             <div class="section-ornament">✾</div>
-            <h2 class="section-title">Event Details</h2>
+            <h2 class="section-title">Butiran Majlis</h2>
             
             <div class="event-card">
-                <h3>Wedding Ceremony & Reception</h3>
+                <h3>Majlis Perkahwinan & Resepsi</h3>
                 <div class="event-info">
-                    <p><strong>Date:</strong> Saturday, January 17, 2026</p>
+                    <p><strong>Date:</strong> Sabtu, Januari 17, 2026</p>
                     <p><strong>Time:</strong> 11:00 AM - 4:00 PM</p>
                     <p><strong>Venue:</strong> Dewan Atabara</p>
                     <p><strong>Address:</strong> Indera Mahkota, 25200 Kuantan, Pahang, Malaysia</p>
@@ -715,12 +753,12 @@
                     <a href="https://www.google.com/maps/place/Dewan+CO-DIDIK+Indera+Mahkota+Kuantan+(Dewan+Atabara)/@3.8342013,103.2732641,17z/data=!4m6!3m5!1s0x31c8ba2f04a3503f:0xbe0352f01d61b176!8m2!3d3.8342013!4d103.275839!16s%2Fg%2F11c5bsgj8y?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D" 
                        target="_blank" 
                        class="location-btn google-maps-btn">
-                        📍 Open in Google Maps
+                        📍 Google Maps
                     </a>
                     <a href="https://waze.com/ul?ll=3.8342013,103.275839&navigate=yes" 
                        target="_blank" 
                        class="location-btn waze-btn">
-                        🚗 Get Waze Directions
+                        🚗 Waze
                     </a>
                 </div>
             </div>
@@ -729,22 +767,22 @@
         <!-- Contact Section -->
         <section id="contact">
             <div class="section-ornament">✿</div>
-            <h2 class="section-title">Contact Us</h2>
+            <h2 class="section-title">Hubungi Kami</h2>
             <div class="contact-grid">
                 <div class="contact-card">
-                    <h3>Azman</h3>
-                    <p>📞 +60 19988-0011</p>
+                    <h3>Nazira</h3>
+                    <p>📞 +60 19985-4400</p>
                 </div>
                 <div class="contact-card">
-                    <h3>Athira</h3>
-                    <p>📞 +60 19914-1100</p>
+                    <h3>Naqeeb</h3>
+                    <p>📞 +60 16986-0695</p>
                 </div>
             </div>
         </section>
 
         <!-- Footer -->
         <footer>
-            <p>Thank you for being part of our special day</p>
+            <p>Terima kasih kerana menjadi sebahagian daripada hari istimewa kami.</p>
             <p style="margin-top: 1rem; font-size: 1.2rem;">❤️</p>
         </footer>
     </div>
@@ -753,12 +791,34 @@
         const opener = document.getElementById('opener');
         const openBtn = document.getElementById('openBtn');
         const mainContent = document.getElementById('mainContent');
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        let isPlaying = false;
 
         openBtn.addEventListener('click', function() {
             opener.classList.add('hidden');
             setTimeout(() => {
                 mainContent.classList.add('visible');
+                // Try to autoplay music
+                bgMusic.play().catch(e => {
+                    console.log('Autoplay prevented');
+                });
+                isPlaying = true;
+                musicToggle.textContent = '🔊';
             }, 500);
+        });
+
+        // Music toggle control
+        musicToggle.addEventListener('click', function() {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicToggle.textContent = '🔇';
+                isPlaying = false;
+            } else {
+                bgMusic.play();
+                musicToggle.textContent = '🔊';
+                isPlaying = true;
+            }
         });
 
         // Add to Calendar function
